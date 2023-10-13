@@ -2,33 +2,18 @@
 
 ### Brief: 015 Exploring a Universal Gestural Language
 
-### Team Members:
-
--   Isaac Robinson
--   McArthur Alford
--   Harrison Wills
--   Connor Geissmann
--   Hugh Drummond
--   Lorenzo Policar
-
-# Table of Contents
-
-<!-- how to run submitted codebase -->
-
-# Running the Codebase
-
 ## Prerequisites
 
 -   The following setup will configure a network of devices that will be able to communicate with each other. This will require that all devices are connected to the same network.
 
 ### Hardware
 
--   Raspberry Pi 3/4 with power supply
--   Micro SD Card (for Raspberry Pi)
+-   Raspberry Pi 3/4 with power supply (used for hosting the Home Assistant OS which in turn hosts the Home Assistant web interface and MQTT broker)
+-   Micro SD Card (for configuring the Raspberry Pi with the Home Assistant OS)
 -   Laptop with SD Card reader (or adapter)
--   Webcam
--   Ethernet Cable (recommended but not required)
--   Smart devices of your choice. We have included instructions for integration with a [TP-Link Tapo Mini Smart Plug](https://www.jbhifi.com.au/products/tp-link-tapo-mini-smart-plug) (smart phone required) and Windows 10/11 (windows computer required).
+-   Webcam (used for capturing gestures)
+-   Ethernet Cable (for home assistant setup)
+-   Smart devices of your choice. We have included instructions for integration with some advanced integrations such as the [TP-Link Tapo Mini Smart Plug](https://www.jbhifi.com.au/products/tp-link-tapo-mini-smart-plug) (smart phone required) and Windows 10/11 (windows computer required).
 
 ## Raspberry Pi Setup
 
@@ -57,20 +42,16 @@ This section has been adapted from the [Home Assistant documentation](https://ww
 1. Once connected to the web interface, follow the on-screen instructions to set up your Home Assistant account.
 1. SELECT **Create my smart home**
 1. Enter a name, username, and password. Select **Create account**. (all data is stored locally on the Raspberry Pi and connections can only be made from devices connected to the same network)
-1. Enter the location of your home. This step can be skipped as
+1. The entering your location step can be skipped as
    the location you choose will not impact the functionality of our project.
-   From the [Home Assistant documentation](https://www.home-assistant.io/installation/raspberrypi):
-   The location is used to populate settings such as time zone, unit system, and currency.
-   It is also used for location-based information and automations: for example showing the weather-forecast, opening the shades at sunrise, or starting the vacuum when you leave the home.
-   If you’d rather not send your location, you can choose a location far away from where you live.
-   You can always change this information later in the settings.
+   More details on why this is collected can be found in the [Home Assistant documentation](https://www.home-assistant.io/installation/raspberrypi):
 1. Select relevant privacy settings and **Next**.
 1. Finish the onboarding process by selecting **Finish**.
 1. Read more about the [Home Assistant core concepts](https://www.home-assistant.io/getting-started/concepts-terminology/).
 
 ### Adding the MQTT Broker Integration
 
-The home assistant can be configured to host an MQTT broker. This will allow the home assistant to communicate with other devices on the network using the MQTT protocol. This is required for the gesture recognition GUI to communicate with the home assistant.
+The home assistant can be configured to host an MQTT broker. This will allow the home assistant to communicate with other devices on the network using the MQTT protocol. This is required for the gesture recognition GUI to communicate with the home assistant and control the smart devices.
 To see how to add other integrations, see the [Home Assistant documentation](https://www.home-assistant.io/getting-started/integration/) and to see the list of all available integrations, see the [Home Assistant integration list](https://www.home-assistant.io/integrations/#all).
 
 This section has been adapted from the [Home Assistant MQTT documentation](https://www.home-assistant.io/integrations/mqtt/)
