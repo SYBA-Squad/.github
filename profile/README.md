@@ -131,6 +131,24 @@ The [gesture recognition library](https://github.com/SYBA-Squad/multiframe-token
 - Gesture language definition and configuration utilities.
 - Gesture recognition demo visualizer.
 - Gesture recognition interface for foreign program use.
+- GUI interface to provide user feedback in constructing commands.
+
+All scripts depend on python (3.9 to 3.11 are verified) with the following libraries:
+- matplotlib
+- torch
+- torch_geometric
+- torchmetrics
+- transitions
+- customtkinter
+- opencv-python
+- numpy
+- pandas
+- mediapipe
+- colorama
+- pandas
+- pyinstaller
+
+For convenience, a Dockerfile and docker-compose file are set up. These include all configuration necessary to support webcam and gpu passthrough. Simply running the docker configuration with enter.sh or using docker compose as usual should construct a fully prepared workspace.
 
 ## Gesture Recognition GUI
 
@@ -140,7 +158,43 @@ We have developed a graphical user interface that provides feedback on the gestu
 
 We have also developed a web interface that allows the user to configure the gestures that they wish to use to control their smart devices. We provide a preset set of commands the user can make so all the rooms, devices and controlling actions. We allow the user to select what hand gesture they wish to use to represent each command.
 
--   TODO: More details on how we developed the web interface
+These are built on top of a config.json file (located in the python subdirectory of the multiframe-tokenizor repository). The configuration files follow a specification that allows for powerful customisation of gestures. A configuration file has the following structure:
+
+```json
+{
+    "commands": [
+        {
+            /**
+            *  command: String representing the command name sent to mqtt
+            */
+            "command": "CommandName",
+            "hands": {
+                "type": "all", /** any of [all, any] */
+                "list": [
+                    /** list my contain any amount of the following two structures: */
+                    {
+                        "type": "all" /** a simple nesting of the above structure */
+                        ...
+                    },
+                    {
+                        "handedness": "any", /** any of [left, right, any] */
+                        "gesture": "gestureName", /** any gesture name provided by the model */
+                        "local": [], /** list containing any of [cycle_x, cycle_y, up, down, left, right, circle, stationary_x, stationary_y] */
+                        "relative": [], /** list containing any of [towards_x, towards_y, away_x, away_y, stationary_x, stationary_y] */
+                        "global": [] /** list containing any of [head, chest, waist, left, middle, right] */
+                    }
+                    
+                ]
+            }
+        }
+    ]
+} 
+```
+
+The local parameter of a hand defines local motion, that is, if the specified hand is performing the described motion. The relative parameter defines motion relative to the other hand, and global describes global position information of the hand.
+
+The "any" and "all" lists can be used to compose single hands into requirements for both hands, or multiple optional configurations. An "any" list requires any of its elements to be satisfied to match the command. An "all" list requires all of its elements to match.
+
 
 ## Gesture Recognition GUI Setup
 
