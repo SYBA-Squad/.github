@@ -125,7 +125,12 @@ We also made use of Home Assistant automations to create triggers that would per
 
 ## Gesture Recognition Program
 
--   TODO: Brief explanation of the program and include list of software utilised
+The [gesture recognition library](https://github.com/SYBA-Squad/multiframe-tokenizer) was developed to provide several utilities, in addition to the main user facing interface. The available functionalities are:
+- Utilities for splitting training data into csv samples
+- Model architecture definitions and training script
+- Gesture language definition and configuration utilities.
+- Gesture recognition demo visualizer.
+- Gesture recognition interface for foreign program use.
 
 ## Gesture Recognition GUI
 
