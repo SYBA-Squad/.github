@@ -20,6 +20,15 @@ The project consists of three main components:
 
 We have developed a graphical user interface that provides feedback on the gestures that are being performed. This program uses the webcam to capture gestures and then uses a machine learning model to classify the gesture. Upon recognising a "gesture sentence" so they have provided a room, device and controlling action, we then publish this action as a message to the MQTT broker on the relevant topic. The UI was built using the [CustomTkinter](https://pypi.org/project/CustomTkinter/) library in python which is a customised version of the Tkinter library (a standard python library for creating GUIs) that provides additional functionality such as the ability to display images and videos. The messages are published to the MQTT broker using the [Paho-MQTT](https://pypi.org/project/paho-mqtt/) library in python.
 
+#### Screenshots
+The bottom bar shows the progress of recognising a sentence. The right bar shows logs of commands being sent out to smart devices.
+|Scenario|Screenshot|
+|-|-|
+|Recognised Room and Device|![Screenshot 2023-10-19 at 4 50 46 am](https://github.com/SYBA-Squad/.github/assets/110031011/aa4869f0-8a7c-4c59-871b-104a688f7b68)|
+|Recognised Gesture Sentence (Room, Device, Control Action)|![Screenshot 2023-10-19 at 4 51 46 am](https://github.com/SYBA-Squad/.github/assets/110031011/9d42c4e1-5064-4793-b0fd-a9bbafda604d)|
+
+
+
 The [gesture recognition library](https://github.com/SYBA-Squad/multiframe-tokenizer) was developed to provide several utilities, in addition to the main user facing interface. The available functionalities are:
 - Utilities for splitting training data into csv samples (handy for training the model)
 - Model architecture definitions and training script
