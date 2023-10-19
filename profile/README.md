@@ -314,9 +314,41 @@ Once configured, you can add the smart plug to the home assistant.
 1. Configure the MQTT connection. Select File > Options > MQTT and enter the hostname of the home assistant `homeassistant.local`, the port `1883` and the username and password of the MQTT broker (these can be found in the MQTT integration configuration).
 
 ## 3. Running the Gesture Configuration Web Interface
-TODO
 
-### Running the React application
+### Running the config server
 
-1. Naviagte to the directory 
+1. Naviagte to the server directory
+   ```
+   cd server
+   ```
+2. Ensure that python is installed https://www.python.org/downloads/ and flask is installed in the current python environment
+   ```
+   pip install flask
+   ```
+3. Start the server
+   ```
+   flask --app main run
+   ```
+4. Download NodeJs from https://nodejs.org/en/download and complete the setup
+5. In a new terminal navigate to the frontend directory
+   ```
+   cd ../frontend
+   ```
+6. Install the dependancies
+   ```
+   npm i
+   ```
+7. Run the react application
+   ```
+   npm install -g serve
+   serve -s build
+   ```
+   For production build
+   or
+   ```
+   npm start
+   ```
+   for development build
+8. If the page does not load you may need to edit the GestureConfig.js file in `frontend/src/pages` and change the SERVER_URL variable to match the address of the flask server and then restart the node server with `npm start`
+9. Open the application in the browser (typically localhost:3000)
 
