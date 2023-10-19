@@ -7,7 +7,6 @@ geometry: "left=2cm, right=2cm, top=2cm, bottom=2cm"
 
 ### Brief: 015 Exploring a Universal Gestural Language
 
-
 The project consists of three main components:
 -  The gesture recognition program and GUI
     - The gesture recognition program uses a machine learning model to recognise gestures and then publishes messages to the MQTT broker on the relevant topic to control smart devices.
@@ -15,6 +14,36 @@ The project consists of three main components:
     - Home Assistant provides a platform for home control and home automation. It is used to host an MQTT broker and integrate smart devices so that they can be controlled through the MQTT protocol.
 -  The gesture configuration web interface
     - The web interface allows the user to configure customised gestures to control their smart devices.
+
+## Table of Contents
+
+- [SYBA Squad | DECO3801](#syba-squad--deco3801)
+    - [Brief: 015 Exploring a Universal Gestural Language](#brief-015-exploring-a-universal-gestural-language)
+  - [Table of Contents](#table-of-contents)
+- [At a Glance](#at-a-glance)
+  - [Gesture Recognition Program and GUI](#gesture-recognition-program-and-gui)
+      - [Screenshots](#screenshots)
+  - [How we used MQTT](#how-we-used-mqtt)
+  - [What is the Home Assistant Operating System?](#what-is-the-home-assistant-operating-system)
+  - [Configuring Gestures](#configuring-gestures)
+- [Running the Project](#running-the-project)
+  - [1. Running Gesture Recognition Program and GUI](#1-running-gesture-recognition-program-and-gui)
+    - [Prerequisites](#prerequisites)
+    - [Using python virtual environment](#using-python-virtual-environment)
+    - [Setup](#setup)
+    - [Using Docker](#using-docker)
+  - [2. Running Home Assistant and integrating smart devices](#2-running-home-assistant-and-integrating-smart-devices)
+    - [Prerequisites](#prerequisites-1)
+    - [Raspberry Pi Setup](#raspberry-pi-setup)
+    - [Configure the Raspberry Pi](#configure-the-raspberry-pi)
+    - [Start the Raspberry Pi](#start-the-raspberry-pi)
+    - [Onboarding Home Assistant](#onboarding-home-assistant)
+    - [Adding the MQTT Broker Add-on](#adding-the-mqtt-broker-add-on)
+    - [Configure the MQTT Integration](#configure-the-mqtt-integration)
+    - [Adding the TP-Link Tapo Mini Smart Plug](#adding-the-tp-link-tapo-mini-smart-plug)
+  - [3. Running the Gesture Configuration Web Interface](#3-running-the-gesture-configuration-web-interface)
+
+# At a Glance
 
 ## Gesture Recognition Program and GUI
 
@@ -40,7 +69,7 @@ The [gesture recognition library](https://github.com/SYBA-Squad/multiframe-token
 
 All scripts depend on python (3.9 to 3.11 are verified) with the following libraries:
 
-#### Machine Learning Gesture Recognition
+**Machine Learning Gesture Recognition**
 - [matplotlib](https://pypi.org/project/matplotlib/)
 - [torch](https://pypi.org/project/torch/)
 - [torch_geometric](https://pypi.org/project/torch-geometric/)
@@ -50,13 +79,17 @@ All scripts depend on python (3.9 to 3.11 are verified) with the following libra
 - [numpy](https://pypi.org/project/numpy/)
 - [pandas](https://pypi.org/project/pandas/)
 - [mediapipe](https://pypi.org/project/mediapipe/)
-#### Machine Learning Model Data Collection Command Line Tool:
+
+**Machine Learning Model Data Collection Command Line Tool:**
 - [colorama](https://pypi.org/project/colorama/)
-#### Packaging and Installation:
+
+**Packaging and Installation:**
 - [pyinstaller](https://pypi.org/project/pyinstaller/)
-#### GUI:
+
+**GUI:**
 - [customtkinter](https://pypi.org/project/CustomTkinter/)
-#### MQTT:
+
+**MQTT:**
 - [paho-mqtt](https://pypi.org/project/paho-mqtt/)
 
 ## How we used MQTT
@@ -173,7 +206,7 @@ docker compose up --build -d; docker compose exec dev-container /bin/bash
 
 ## 2. Running Home Assistant and integrating smart devices
 
-## Prerequisites
+### Prerequisites
 
 -   The following setup will configure a network of devices that will be able to communicate with each other. This will require that all devices are connected to the same network.
 
@@ -185,7 +218,7 @@ docker compose up --build -d; docker compose exec dev-container /bin/bash
 -   Ethernet Cable (for home assistant setup)
 -   Smart devices of your choice. We have included instructions for integration with some advanced integrations such as the [TP-Link Tapo Mini Smart Plug](https://www.jbhifi.com.au/products/tp-link-tapo-mini-smart-plug) (smart phone required) and Windows 10/11 (windows computer required).
 
-## Raspberry Pi Setup
+### Raspberry Pi Setup
 
 This section has been adapted from the [Home Assistant documentation](https://www.home-assistant.io/installation/raspberrypi).
 
