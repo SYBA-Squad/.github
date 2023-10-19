@@ -314,5 +314,9 @@ Once configured, you can add the smart plug to the home assistant.
 1. Configure the MQTT connection. Select File > Options > MQTT and enter the hostname of the home assistant `homeassistant.local`, the port `1883` and the username and password of the MQTT broker (these can be found in the MQTT integration configuration).
 
 ## 3. Running the Gesture Configuration Web Interface
+TODO
 
-- TODO
+### Running the React application
+
+1. Naviagte to the directory 
+
