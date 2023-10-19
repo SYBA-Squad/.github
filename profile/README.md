@@ -325,20 +325,21 @@ Once configured, you can add the smart plug to the home assistant.
    ```
    pip install flask
    ```
-3. Start the server
+3. Edit the SAVE_FILE variable in main.py to match the path to the config.json file used in the gesture-recognition code
+4. Start the server
    ```
    flask --app main run
    ```
-4. Download NodeJs from https://nodejs.org/en/download and complete the setup
-5. In a new terminal navigate to the frontend directory
+5. Download NodeJs from https://nodejs.org/en/download and complete the setup
+6. In a new terminal navigate to the frontend directory
    ```
    cd ../frontend
    ```
-6. Install the dependancies
+7. Install the dependancies
    ```
    npm i
    ```
-7. Run the react application
+8. Run the react application
    ```
    npm install -g serve
    serve -s build
@@ -349,6 +350,6 @@ Once configured, you can add the smart plug to the home assistant.
    npm start
    ```
    for development build
-8. If the page does not load you may need to edit the GestureConfig.js file in `frontend/src/pages` and change the SERVER_URL variable to match the address of the flask server and then restart the node server with `npm start`
-9. Open the application in the browser (typically localhost:3000)
+9. If the page does not load you may need to edit the GestureConfig.js file in `frontend/src/pages` and change the SERVER_URL variable to match the address of the flask server and then restart the node server with `npm start`
+10. Open the application in the browser (typically localhost:3000)
 
