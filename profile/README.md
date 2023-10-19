@@ -43,6 +43,7 @@ The project consists of three main components:
     - [Adding the TP-Link Tapo Mini Smart Plug](#adding-the-tp-link-tapo-mini-smart-plug)
     - [Configuring Windows 10/11 using Push2Run](#configuring-windows-1011-using-push2run)
   - [3. Running the Gesture Configuration Web Interface](#3-running-the-gesture-configuration-web-interface)
+    - [Running the config server](#running-the-config-server)
 
 # At a Glance
 
@@ -179,7 +180,7 @@ The program can either be run using a python virutal environment or containerise
    - `python -m venv venv`
 3. Activate the virtual environment
    - Windows: `venv\Scripts\activate`
-   - Linux: `source venv/bin/activate`
+   - Linux and macOS: `source venv/bin/activate`
 4. Install the required packages
    - `pip install -r requirements.txt`
 5. Run the program
@@ -318,38 +319,47 @@ Once configured, you can add the smart plug to the home assistant.
 ### Running the config server
 
 1. Naviagte to the server directory
-   ```
-   cd server
-   ```
-2. Ensure that python is installed https://www.python.org/downloads/ and flask is installed in the current python environment
-   ```
-   pip install flask
-   ```
-3. Edit the SAVE_FILE variable in main.py to match the path to the config.json file used in the gesture-recognition code
-4. Start the server
-   ```
-   flask --app main run
-   ```
-5. Download NodeJs from https://nodejs.org/en/download and complete the setup
-6. In a new terminal navigate to the frontend directory
-   ```
-   cd ../frontend
-   ```
-7. Install the dependancies
-   ```
-   npm i
-   ```
-8. Run the react application
-   ```
-   npm install -g serve
-   serve -s build
-   ```
-   For production build
-   or
-   ```
-   npm start
-   ```
-   for development build
-9. If the page does not load you may need to edit the GestureConfig.js file in `frontend/src/pages` and change the SERVER_URL variable to match the address of the flask server and then restart the node server with `npm start`
-10. Open the application in the browser (typically localhost:3000)
+    ```
+    cd config-interface/server
+    ```
+2. Create a python virtual environment
+    ```
+    python -m venv venv
+    ```
+3. Activate the virtual environment
+    - Windows: `venv\Scripts\activate`
+    - Linux and macOS: `source venv/bin/activate`
+4. Install flask and the required packages
+    ```
+    pip install -r requirements.txt
+    ```
+5. Edit the SAVE-FILE value in the .env file to match the path to the config.json file used in the gesture-recognition code
+    - If both the gesture-recognition and config-server directories are contained within the same directory, the default value (../../gesture-recognition/python/config.json) should work
+6. Start the server
+    ```
+    flask --app main run
+    ```
+7. Download NodeJs from https://nodejs.org/en/download and complete the setup
+8. In a new terminal navigate to the frontend directory
+    ```
+    cd config-interface/frontend
+    ```
+9. Install the dependancies
+    ```
+    npm i
+    ```
+10. Run the react application
+  
+    For production build:
+    ```
+    npm install -g serve
+    serve -s build
+    ```
+    or for development build
+    ```
+    npm start
+    ```
+   
+11. If the page does not load you may need to edit the GestureConfig.js file in `frontend/src/pages` and change the SERVER_URL variable to match the address of the flask server and then restart the node server with `npm start`
+12. Open the application in the browser (typically localhost:3000)
 
