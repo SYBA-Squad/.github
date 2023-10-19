@@ -41,6 +41,7 @@ The project consists of three main components:
     - [Adding the MQTT Broker Add-on](#adding-the-mqtt-broker-add-on)
     - [Configure the MQTT Integration](#configure-the-mqtt-integration)
     - [Adding the TP-Link Tapo Mini Smart Plug](#adding-the-tp-link-tapo-mini-smart-plug)
+    - [Configuring Windows 10/11 using Push2Run](#configuring-windows-1011-using-push2run)
   - [3. Running the Gesture Configuration Web Interface](#3-running-the-gesture-configuration-web-interface)
 
 # At a Glance
@@ -264,7 +265,8 @@ The home assistant can be configured to host an MQTT broker. This will allow the
 
 1. Navigate to Settings > Devices & Services
 1. Under Discovered Devices, select configure next to the MQTT integration > Submit
-1. Note down the MQTT broker authentication details (username and password) as these will be required for the gesture recognition GUI setup. These can be found by selecting the MQTT integration > Configure > Reconfigure > Show password
+1. Note down the MQTT broker authentication details (username and password). These can be found by selecting the MQTT integration > Configure > Reconfigure > Show password
+1. Edit the env variables in the multiframe-tokenizer/mqtt/.env file to match the MQTT broker authentication details. The hostname and port should not need to be changed.
 
 ### Adding the TP-Link Tapo Mini Smart Plug
 
@@ -304,6 +306,12 @@ Once configured, you can add the smart plug to the home assistant.
 
 -   The valid rooms, devices and controlling actions can be found in multiframe-tokenizer/python/datatypes.py
 
+### Configuring Windows 10/11 using Push2Run
+
+1. Download and install [Push2Run](https://www.push2run.com/) on your Windows computer.
+1. Import the Push2Run configuration file found in multiframe-tokenizer/mqtt/config.p2r
+1. Turn on the actions you wish to use to control your Windows computer.
+1. Configure the MQTT connection. Select File > Options > MQTT and enter the hostname of the home assistant `homeassistant.local`, the port `1883` and the username and password of the MQTT broker (these can be found in the MQTT integration configuration).
 
 ## 3. Running the Gesture Configuration Web Interface
 
