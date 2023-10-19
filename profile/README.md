@@ -126,13 +126,37 @@ The project consists of three main components:
 
 ## 1. Running Gesture Recognition Program and GUI
 
+The program can either be run using a python virutal environment or containerised using docker.
 
 ### Prerequisites
+
 **Hardware**
 - Webcam
 
 **Software**
-- Docker
+- Python 3.9-11 or Docker
+
+### Using python virtual environment
+
+### Setup
+1. Navigate into the directory of this project
+   - `cd multiframe-tokenizer`
+2. Create a virtual environment
+   - `python -m venv venv`
+3. Activate the virtual environment
+   - Windows: `venv\Scripts\activate`
+   - Linux: `source venv/bin/activate`
+4. Install the required packages
+   - `pip install -r requirements.txt`
+5. Run the program
+   - `python python/gui.py`
+6. The screen will be black until the wave command is recognised.  By default the wave command is a hand performing the five gesture whilst moving from left to right. The bottom bar shows the progress of recognising a sentence. The right bar shows logs of commands being sent out to smart devices.
+
+- If tkinter is not installed, install it using your package manager
+   - Linux: `sudo apt-get install python-tk`
+   - macOS: `brew install python-tk`
+
+### Using Docker
 
 For convenience, a Dockerfile and docker-compose file are set up. These include all configuration necessary to support webcam and gpu passthrough. Simply running the docker configuration by running `./enter.sh` or by using docker compose as usual should construct a fully prepared workspace which will open the gesture recognition GUI on startup.
 To run docker compose, run the following command in the root directory of the repository:
