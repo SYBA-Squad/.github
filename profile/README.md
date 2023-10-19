@@ -113,7 +113,7 @@ We also made use of Home Assistant automations to create triggers that would per
 
 We have also developed a web interface that allows the user to configure the gestures that they wish to use to control their smart devices. We provide a preset set of commands the user can make so all the rooms, devices and controlling actions. We allow the user to select what hand gesture they wish to use to represent each command.
 
-These are built on top of a config.json file (located in the python subdirectory of the multiframe-tokenizor repository). The configuration files follow a specification that allows for powerful customisation of gestures. A configuration file has the following structure:
+These are built on top of a config.json file (located in the python subdirectory of the gesture recognition repository). The configuration files follow a specification that allows for powerful customisation of gestures. A configuration file has the following structure:
 
 ```json
 {
@@ -153,7 +153,7 @@ The "any" and "all" lists can be used to compose single hands into requirements 
 # Running the Project
 
 The project consists of three main components:
-1.  The gesture recognition program and GUI (multiframe-tokenizer)
+1.  The gesture recognition program and GUI
 2.  Home Assistant and integrating smart devices
 3.  The gesture configuration web interface
 
@@ -174,7 +174,7 @@ The program can either be run using a python virutal environment or containerise
 
 ### Setup
 1. Navigate into the directory of this project
-   - `cd multiframe-tokenizer`
+   - `cd gesture-recognition`
 2. Create a virtual environment
    - `python -m venv venv`
 3. Activate the virtual environment
@@ -266,7 +266,7 @@ The home assistant can be configured to host an MQTT broker. This will allow the
 1. Navigate to Settings > Devices & Services
 1. Under Discovered Devices, select configure next to the MQTT integration > Submit
 1. Note down the MQTT broker authentication details (username and password). These can be found by selecting the MQTT integration > Configure > Reconfigure > Show password
-1. Edit the env variables in the multiframe-tokenizer/mqtt/.env file to match the MQTT broker authentication details. The hostname and port should not need to be changed.
+1. Edit the env variables in the gesture-recognition/mqtt/.env file to match the MQTT broker authentication details. The hostname and port should not need to be changed.
 
 ### Adding the TP-Link Tapo Mini Smart Plug
 
@@ -304,12 +304,12 @@ Once configured, you can add the smart plug to the home assistant.
 1. You will now be prompted to enter the username and password of your Tapo account. (Note: this is the same as the username and password of the Tapo app) and the ip address of the smart plug that you noted down earlier.
 1. Finally, add an automation to the home assistant to control the smart plug. Select Add Automation > When something is triggered... Turn on the smart plug > Add Trigger > MQTT > Enter "room-number/device-number" (lowercase) for the topic and "on" for the payload > Save
 
--   The valid rooms, devices and controlling actions can be found in multiframe-tokenizer/python/datatypes.py
+-   The valid rooms, devices and controlling actions can be found in gesture-recognition/python/datatypes.py
 
 ### Configuring Windows 10/11 using Push2Run
 
 1. Download and install [Push2Run](https://www.push2run.com/) on your Windows computer.
-1. Import the Push2Run configuration file found in multiframe-tokenizer/mqtt/config.p2r
+1. Import the Push2Run configuration file found in gesture-recognition/mqtt/config.p2r
 1. Turn on the actions you wish to use to control your Windows computer.
 1. Configure the MQTT connection. Select File > Options > MQTT and enter the hostname of the home assistant `homeassistant.local`, the port `1883` and the username and password of the MQTT broker (these can be found in the MQTT integration configuration).
 
