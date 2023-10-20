@@ -62,7 +62,7 @@ The bottom bar shows the progress of recognising a sentence. The right bar shows
 
 
 
-The [gesture recognition library](https://github.com/SYBA-Squad/multiframe-tokenizer) was developed to provide several utilities, in addition to the main user facing interface. The available functionalities are:
+The [gesture recognition library](https://github.com/SYBA-Squad/Gesture-Recognition-Library) was developed to provide several utilities, in addition to the main user facing interface. The available functionalities are:
 - Utilities for splitting training data into csv samples (handy for training the model)
 - Model architecture definitions and training script
 - Gesture language definition and configuration utilities (e.g. all the gestures that can be recognised)
