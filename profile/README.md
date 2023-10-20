@@ -169,6 +169,8 @@ The global positions are the postion of the hand relative to the body. So is it 
 
 The "any" and "all" lists can be used to compose single hands into requirements for both hands, or multiple optional configurations. An "any" list requires any of its elements to be satisfied to match the command. An "all" list requires all of its elements to match.
 
+Full documentation on the meanings of these variables is featured in the documentation of the library. See its readme.
+
 # Running the Project
 
 The project consists of three main components:
