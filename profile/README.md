@@ -149,6 +149,24 @@ These are built on top of a config.json file (located in the python subdirectory
 
 The local parameter of a hand defines local motion, that is, if the specified hand is performing the described motion. The relative parameter defines motion relative to the other hand, and global describes global position information of the hand.
 
+All possible parameters can be found in `gesture-recognition/python/datatypes.py`.
+
+```python
+# All local motion for a single hand
+HandLocal = Enum('HandLocal', [CIRCLE, STATIONARY_X, STATIONARY_Y, UP, DOWN, LEFT, RIGHT, CYCLE_X, CYCLE_Y])
+
+# All relative motion between hands
+HandRelative = Enum('HandRelative', [AWAY_X, AWAY_Y, TOWARDS_X, TOWARDS_Y, STATIONARY_X, STATIONARY_Y, NEARBY])
+
+# All global positions of a hand
+HandGlobal = Enum('HandGlobal', [HEAD, CHEST, WAIST, LEFT, MIDDLE, RIGHT])
+```
+The labels proceeded by an x or a y indicates that the motion is on that x or y axis. So AWAY_X means the hand is moving away from the other hand on the x axis.
+Local motion is just how the hand is moving. So is it stationary, performing a circular motion, moving up or down, or is it moving both up and down so CYCLE_Y.
+Relative motion is how the hand is moving relative to the other hand. So is it moving away, towards, etc.
+The global positions are the postion of the hand relative to the body. So is it at the head level, chest, etc.
+
+
 The "any" and "all" lists can be used to compose single hands into requirements for both hands, or multiple optional configurations. An "any" list requires any of its elements to be satisfied to match the command. An "all" list requires all of its elements to match.
 
 # Running the Project
