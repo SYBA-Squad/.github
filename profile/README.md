@@ -424,49 +424,6 @@ We have developed a graphical user interface that provides feedback on the gestu
 
 More complete documentation can be found in the README of the gesture recognition library.
 
-## Configuring Gestures
-
-We have also developed a web interface that allows the user to configure the gestures that they wish to use to control their smart devices. We provide a preset set of commands the user can make so all the rooms, devices and controlling actions. We allow the user to select what hand gesture they wish to use to represent each command.
-
-These are built on top of a config.json file (located in the python subdirectory of the multiframe-tokenizor repository). The configuration files follow a specification that allows for powerful customisation of gestures. A configuration file has the following structure:
-
-```json
-{
-    "commands": [
-        {
-            /**
-            *  command: String representing the command name sent to mqtt
-            */
-            "command": "CommandName",
-            "hands": {
-                "type": "all", /** any of [all, any] */
-                "list": [
-                    /** list my contain any amount of the following two structures: */
-                    {
-                        "type": "all" /** a simple nesting of the above structure */
-                        ...
-                    },
-                    {
-                        "handedness": "any", /** any of [left, right, any] */
-                        "gesture": "gestureName", /** any gesture name provided by the model */
-                        "local": [], /** list containing any of [cycle_x, cycle_y, up, down, left, right, circle, stationary_x, stationary_y] */
-                        "relative": [], /** list containing any of [towards_x, towards_y, away_x, away_y, stationary_x, stationary_y] */
-                        "global": [] /** list containing any of [head, chest, waist, left, middle, right] */
-                    }
-                    
-                ]
-            }
-        }
-    ]
-} 
-```
-
-The local parameter of a hand defines local motion, that is, if the specified hand is performing the described motion. The relative parameter defines motion relative to the other hand, and global describes global position information of the hand.
-
-The "any" and "all" lists can be used to compose single hands into requirements for both hands, or multiple optional configurations. An "any" list requires any of its elements to be satisfied to match the command. An "all" list requires all of its elements to match.
-
-More complete documentation can be found in the README of the gesture recognition library.
-
 ## Gesture Recognition GUI Setup
 
 ### Dependencies
