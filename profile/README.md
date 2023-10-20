@@ -374,16 +374,17 @@ Once configured, you can add the smart plug to the home assistant.
     npm i
     ```
 10. Run the react application
+
+    For a development build
+    ```
+    npm start
+    ```
   
-    For production build:
+    or for a production build:
     ```
     npm install -g serve
     serve -s build
     ```
-    or for development build
-    ```
-    npm start
-    ```
    
-11. If the page does not load you may need to edit the GestureConfig.js file in `frontend/src/pages` and change the SERVER_URL variable to match the address of the flask server and then restart the node server with `npm start`
-12. Open the application in the browser (typically localhost:3000)
+12. If the page does not load you may need to edit the GestureConfig.js file in `frontend/src/pages` and change the SERVER_URL variable to match the address of the flask server and then restart the node server with `npm start`
+13. Open the application in the browser (typically localhost:3000)
