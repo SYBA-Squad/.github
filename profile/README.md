@@ -416,7 +416,7 @@ All scripts depend on python (3.9 to 3.11 are verified) with the following libra
 
 For convenience, a Dockerfile and docker-compose file are set up. These include all configuration necessary to support webcam and gpu passthrough. Simply running the docker configuration with enter.sh or using docker compose as usual should construct a fully prepared workspace.
 
-More complete documentation can be found in the README of this library.
+More complete documentation can be found in the README of this library, regarding its set up and usage.
 
 ## Gesture Recognition GUI
 
