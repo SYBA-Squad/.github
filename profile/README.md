@@ -200,7 +200,7 @@ The program can either be run using a python virutal environment or containerise
    - Windows: `venv\Scripts\activate`
    - Linux and macOS: `source venv/bin/activate`
 4. Install the required packages
-   - `pip install -r requirements.txt`
+   - `pip3 install -r requirements.txt`
 5. Run the program
    - `python python/gui.py`
 6. The screen will be black until the wave command is recognised.  By default the wave command is a hand performing the five gesture whilst moving from left to right. The bottom bar shows the progress of recognising a sentence. The right bar shows logs of commands being sent out to smart devices.
@@ -349,7 +349,7 @@ Once configured, you can add the smart plug to the home assistant.
     - Linux and macOS: `source venv/bin/activate`
 4. Install flask and the required packages
     ```
-    pip install -r requirements.txt
+    pip3 install -r requirements.txt
     ```
 5. Edit the SAVE-FILE value in the .env file to match the path to the config.json file used in the gesture-recognition code
     - If both the gesture-recognition and config-server directories are contained within the same directory, the default value (../../gesture-recognition/python/config.json) should work
