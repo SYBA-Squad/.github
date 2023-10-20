@@ -150,9 +150,13 @@ All scripts depend on python (3.9 to 3.11 are verified) with the following libra
 
 For convenience, a Dockerfile and docker-compose file are set up. These include all configuration necessary to support webcam and gpu passthrough. Simply running the docker configuration with enter.sh or using docker compose as usual should construct a fully prepared workspace.
 
+More complete documentation can be found in the README of this library.
+
 ## Gesture Recognition GUI
 
 We have developed a graphical user interface that provides feedback on the gestures that are being performed. This program uses the webcam to capture gestures and then uses a machine learning model to classify the gesture. Upon recognising a "gesture sentence" so they have provided a room, device and controlling action, we then publish this action as a message to the MQTT broker on the relevant topic. The UI was built using the [CustomTkinter](https://pypi.org/project/CustomTkinter/) library in python which is a customised version of the Tkinter library that provides additional functionality such as the ability to display images and videos. Since our recognition program is written in python, it was made sense to integrate the gesture recognition program with a python UI. The messages are published to the MQTT broker using the [Paho-MQTT](https://pypi.org/project/paho-mqtt/) library in python.
+
+More complete documentation can be found in the README of the gesture recognition library.
 
 ## Configuring Gestures
 
@@ -195,6 +199,7 @@ The local parameter of a hand defines local motion, that is, if the specified ha
 
 The "any" and "all" lists can be used to compose single hands into requirements for both hands, or multiple optional configurations. An "any" list requires any of its elements to be satisfied to match the command. An "all" list requires all of its elements to match.
 
+More complete documentation can be found in the README of the gesture recognition library.
 
 ## Gesture Recognition GUI Setup
 
