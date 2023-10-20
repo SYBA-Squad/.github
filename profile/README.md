@@ -29,7 +29,7 @@ The project consists of three main components:
 - [Running the Project](#running-the-project)
   - [1. Running Gesture Recognition Program and GUI](#1-running-gesture-recognition-program-and-gui)
     - [Prerequisites](#prerequisites)
-    - [Using python virtual environment](#using-python-virtual-environment)
+    - [Using python virtual environment Virtualenv](#using-python-virtual-environment-virtualenv)
     - [Setup](#setup)
     - [Using Docker](#using-docker)
   - [2. Running Home Assistant and integrating smart devices](#2-running-home-assistant-and-integrating-smart-devices)
@@ -50,6 +50,8 @@ The project consists of three main components:
 ## Gesture Recognition Program and GUI
 
 We have developed a graphical user interface that provides feedback on the gestures that are being performed. This program uses the webcam to capture gestures and then uses a machine learning model to classify the gesture. Upon recognising a "gesture sentence" so they have provided a room, device and controlling action, we then publish this action as a message to the MQTT broker on the relevant topic. The UI was built using the [CustomTkinter](https://pypi.org/project/CustomTkinter/) library in python which is a customised version of the Tkinter library (a standard python library for creating GUIs) that provides additional functionality such as the ability to display images and videos. The messages are published to the MQTT broker using the [Paho-MQTT](https://pypi.org/project/paho-mqtt/) library in python.
+
+More complete documentation can be found in the README of the gesture recognition library.
 
 #### Screenshots
 The bottom bar shows the progress of recognising a sentence. The right bar shows logs of commands being sent out to smart devices.
@@ -190,8 +192,11 @@ The program can either be run using a python virutal environment or containerise
 
 **Software**
 - Python 3.9-11 or Docker
+- Alternatively you can use [Docker](https://www.docker.com/products/docker-desktop) virtual environment for installing the python libraries that we have provided a Dockerfile for.
 
-### Using python virtual environment
+### Using python virtual environment [Virtualenv](https://virtualenv.pypa.io/en/latest/)
+
+You can use other options such as [Anaconda](https://www.anaconda.com/products/individual) or [Pipenv](https://pypi.org/project/pipenv/) for creating a virtual environment. Otherwise, you can install the libraries globally on your machine using [`pip`](https://pip.pypa.io/en/stable/) if you wish.
 
 ### Setup
 1. Navigate into the directory of this project
@@ -382,62 +387,3 @@ Once configured, you can add the smart plug to the home assistant.
    
 11. If the page does not load you may need to edit the GestureConfig.js file in `frontend/src/pages` and change the SERVER_URL variable to match the address of the flask server and then restart the node server with `npm start`
 12. Open the application in the browser (typically localhost:3000)
-
-Integrations are pieces of software that allow Home Assistant to connect to other software and platforms. Basically, they are the glue between Home Assistant and the devices and services you want to connect to on your local network such as smart devices. Home Assistant provides a large number of integrations by default, but you can also install custom integrations. For example, our Tapo Mini Smart Plug was not supported by Home Assistant by default, so we installed the Tapo Controller integration to control the TP-Link Tapo Mini Smart Plug.
-
-Without Home Assistant, we would have to manually create this bridge between the MQTT broker and every smart device we wanted to control. Home Assistant provides a platform for us to easily configure and control our smart devices through a single interface whilst providing a large number of official integrations for us to use plus even more custom integrations provided by the community.
-
-We also made use of Home Assistant automations to create triggers that would perform an action when a specific event occurred. For example, we created an automation to turn on and off the smart plug when specific MQTT messages were received. This allowed us to control the smart plug through by sending messages from our gesture recognition program.
-
-## Gesture Recognition Program
-
-The [gesture recognition library](https://github.com/SYBA-Squad/multiframe-tokenizer) was developed to provide several utilities, in addition to the main user facing interface. The available functionalities are:
-- Utilities for splitting training data into csv samples
-- Model architecture definitions and training script
-- Gesture language definition and configuration utilities.
-- Gesture recognition demo visualizer.
-- Gesture recognition interface for foreign program use.
-- GUI interface to provide user feedback in constructing commands.
-
-All scripts depend on python (3.9 to 3.11 are verified) with the following libraries:
-- matplotlib
-- torch
-- torch_geometric
-- torchmetrics
-- transitions
-- customtkinter
-- opencv-python
-- numpy
-- pandas
-- mediapipe
-- colorama
-- pandas
-- pyinstaller
-
-For convenience, a Dockerfile and docker-compose file are set up. These include all configuration necessary to support webcam and gpu passthrough. Simply running the docker configuration with enter.sh or using docker compose as usual should construct a fully prepared workspace.
-
-More complete documentation can be found in the README of this library, regarding its set up and usage.
-
-## Gesture Recognition GUI
-
-We have developed a graphical user interface that provides feedback on the gestures that are being performed. This program uses the webcam to capture gestures and then uses a machine learning model to classify the gesture. Upon recognising a "gesture sentence" so they have provided a room, device and controlling action, we then publish this action as a message to the MQTT broker on the relevant topic. The UI was built using the [CustomTkinter](https://pypi.org/project/CustomTkinter/) library in python which is a customised version of the Tkinter library that provides additional functionality such as the ability to display images and videos. Since our recognition program is written in python, it was made sense to integrate the gesture recognition program with a python UI. The messages are published to the MQTT broker using the [Paho-MQTT](https://pypi.org/project/paho-mqtt/) library in python.
-
-More complete documentation can be found in the README of the gesture recognition library.
-
-## Gesture Recognition GUI Setup
-
-### Dependencies
-
--   [Python 3.9](https://www.python.org/downloads/)
--   Python libraries:
-    -   [OpenCV](https://pypi.org/project/opencv-python/)
-    -   [Numpy](https://pypi.org/project/numpy/)
-    -   [Pandas](https://pypi.org/project/pandas/)
-    -   [Mediapipe](https://pypi.org/project/mediapipe/)
-    -   [Pytorch](https://pypi.org/project/torch/)
-    -   [Matplotlib](https://pypi.org/project/matplotlib/)
-    -   [Tensorflow](https://pypi.org/project/tensorflow/)
-    -   [CustomTkinter](https://pypi.org/project/CustomTkinter/)
-    -   [MQTT](https://pypi.org/project/paho-mqtt/)
--   [Docker](https://www.docker.com/products/docker-desktop) virtual environment for installing the python libraries that we have provided a Dockerfile for. Other options such as [Anaconda](https://www.anaconda.com/products/individual), [Virtualenv](https://virtualenv.pypa.io/en/latest/) or [Pipenv](https://pypi.org/project/pipenv/) are also viable to be used. Otherwise, you can install the libraries globally on your machine using [`pip`](https://pip.pypa.io/en/stable/) if you wish.
-
